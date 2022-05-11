@@ -6,8 +6,8 @@ class ToDo {
         veryHigh: { order: 3, name: 'molto alta', color: 'red' }
     }
 
-    constructor(title, priority = ToDo.PRIORITY.low, tags = []) {
-        this.title = title;
+    constructor(name, priority = ToDo.PRIORITY.low, tags = []) {
+        this.name = name;
         this._priority = priority;
         this.tags = tags;
         this._creationDate = new Date().getTime();
@@ -33,7 +33,7 @@ class ToDo {
 
     toString() {
 
-        const toDoString = 'Nome: ' + this.title + '\n' +
+        const toDoString = 'Nome: ' + this.name + '\n' +
             'Priorità: ' + this.priority.name + '\n' +
             'Tag: ' + this.tags + '\n' +
             'Data di creazione: ' + this.creationDate;
@@ -50,8 +50,8 @@ class ToDo {
 
 class DeadLineToDo extends ToDo {
 
-    constructor(title, deadLineDate = null, priority = ToDo.PRIORITY.low, tags = []) {
-        super(title, priority, tags);
+    constructor(name, deadLineDate = null, priority = ToDo.PRIORITY.low, tags = []) {
+        super(name, priority, tags);
         if (deadLineDate === null) {
             this._deadLineDate = this._creationDate + (1000 * 60 * 60 * 24);
             // const tomorrow = new Date(this._creationDate.getTime());
